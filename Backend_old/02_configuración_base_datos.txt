@@ -1,0 +1,33 @@
+1. instalar el paquete para conectarnos con postgresql
+
+>> pip install psycopg2
+
+2. En la conexión de la base de datos vamos a configurar la conexión
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": 'ArchivosDelEstado',
+        'USER': 'albapp',
+        'PASSWORD': 'albapp',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
+
+3. creamos la aplicación en la carpeta apps para los usuarios
+
+>> django-admin startapp users
+
+4. instalamos la libreria simple_history para llevar un historial del modelo 
+
+>>pip install django-simple-history
+
+5. migramos el modelo de base de datos 
+>> pythom manage.py makemigrations
+>> python manage.py migrate
+
+6. creamos el super usuario 
+
+>> python manage.py createsuperuser
+

@@ -1,0 +1,47 @@
+/* Aplicamos a todo con el * */
+*{
+    margin: 0;
+    padding: 0;
+}
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth; /*Hace el scroll más suave*/
+}
+
+body{
+    scroll-behavior: smooth; /*Hace el scroll más suave*/
+    text-rendering: optimizeSpeed; /*Renderiza las fuentes un poco más rapido*/
+    line-height: 1.5;
+}
+
+ul,ol {
+    list-style: none;
+}
+
+a{
+    display: block; /*Para que se comporte como una caja*/
+    text-decoration: none;
+}
+
+p a{
+    display: inline;
+}
+
+img, video,iframe, picture figure {
+    max-width: 100%;
+    display: block;
+}
+
+form, input, select, textarea, button, label {
+    display: block;
+    font-family: inherit; /*fuente heradada */
+    font-size: inherit;
+    color: inherit;
+}

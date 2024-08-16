@@ -1,0 +1,72 @@
+@import '../../css/styles.scss';
+
+.container_contact{
+    background-image: url("../../../public/CONTACTO.jpg");
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    width: 100%;
+    height: 70vh;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+}
+
+/*Texto de la izquierda*/
+
+.container_text_contact{
+    width: 60%;
+    height: 100%;
+    color: $color-text-in;
+    padding: 12% 10%;
+}
+
+.title_contact{
+    text-align: center;
+    text-shadow: 0.2rem , 0.2rem, 0.4rem rgba($color_black, 0.8);
+}
+
+.content_contact{
+    text-align: justify;
+    font-size: 120%;
+    text-shadow: 0.2rem , 0.2rem, 0.4rem rgba($color_black, 0.8);
+}
+
+
+/*Fomrulario*/
+
+.container_form_contact{
+    width: 40%;
+    height: 100%;
+    color: $color-text-in;
+    padding: 5%;
+}
+
+.subcontainer_form_contact{
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color-background-bar, 0.7);
+    border-radius: 1.5rem;
+    padding: 5%;
+}
+
+.form_contact {
+    width: 100%;
+    height: auto;
+}
+
+.field_form_contact{
+    width: 100%;
+    margin: 1.5rem 0;
+    display: block;
+    justify-content: center;
+    
+}
+
+.input_contact{
+    width: 100%;
+}
+
+.button_form_contact{
+    text-align: center;
+    font-size: 1.3rem !important;
+}

@@ -1,0 +1,36 @@
+@import '../../css/styles.scss';
+
+.image_form_login{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_login{
+    width: 100%;
+    display: block;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit_login{
+    display: flex;
+    justify-content: center;
+}
+
+.button_submit_login{
+    width: 100%;
+    font-size: 1.5rem !important;
+    border-radius: 1rem !important;
+    background-color: $color-background-botton !important;
+}
+
+.input_login {
+    font-size: 1.5rem !important;
+    border-radius: 1rem !important;
+    
+}
+
+

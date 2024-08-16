@@ -1,0 +1,73 @@
+@import '../../css/styles.scss';
+
+.row_item {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*title*/
+
+.container_title_item{
+    position: relative;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.title_item{
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    left: 0%;
+    width: 120%;
+    background-color: $color-background-bar;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    color: $color-text-in;
+    font-family: "Poppins", Helvetica, sans-serif;
+    font-size: 120%;
+    z-index: 1;
+}
+
+/* content*/
+
+.container_content{
+    width: 70%;
+    padding: 2%;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-background-secundary;
+    border-radius: 2rem;
+}
+
+
+/*img */
+
+.container_img_column{
+    width: 50%;
+    height: 100%;
+    padding: 2%;
+
+}
+
+.img_column{
+    width: 100%;
+    height: 100%;
+    
+}
+
+/*text*/
+
+.container_text_column{
+    width: 50%;
+    height: 100%;
+    font-size: 110%;
+}

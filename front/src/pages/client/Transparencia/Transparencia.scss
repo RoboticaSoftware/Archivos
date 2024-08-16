@@ -1,0 +1,26 @@
+@import '../../../css/styles.scss';
+
+.container_icons_transparencia{
+    width: 80%;
+    height: auto;
+    margin: 2% 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.container_icon_transparencia{
+    width: 100%;
+    text-align: center;
+    color: $color-text;
+    transform: 300ms;
+}
+
+.container_icon_transparencia:hover{
+    color: rgba($color-background-bar,0.7);
+}
+
+.text_icon_transparencia{
+    color: $color-text;
+}

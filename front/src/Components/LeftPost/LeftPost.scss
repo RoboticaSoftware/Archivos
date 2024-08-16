@@ -1,0 +1,39 @@
+@import '../../css/styles.scss';
+
+.left_post{
+    display: flex;
+    align-items: center;
+}
+
+/*Texto*/
+.text_left_post{
+    width: 60%;
+    display: block;
+    align-items: center;
+    padding: 2%;
+}
+
+.title_left_post{
+    color: #38597E;
+    font-weight: bold;
+}
+
+.content_left_post{
+    text-align: justify;
+    font-size: 120%;
+}
+
+/*Imagen*/
+
+.container_picture_left_post{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.picture_left_post{
+    width: 80%;
+    height: 80%
+}

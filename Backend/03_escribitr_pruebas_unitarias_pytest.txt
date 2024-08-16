@@ -1,0 +1,9 @@
+instalamos la librería de pytest
+
+>> pip install pytest
+>> pip install pytest-django
+
+Creamos el archivo pytest.ini y la carpeta tests eliminado los archivos tests.py de cada aplicación creada
+
+luego creamos nuestros test en la carpeta de tests
+

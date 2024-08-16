@@ -1,0 +1,32 @@
+
+npm install --save cities.json
+
+1. Crear el ambiente con el que vamos a trabajar 
+
+>> python -m venv django_rest_env
+
+2. activamos el ambiente e instalamos djangorestframework
+
+>> pip install djangorestframework
+
+3. creamos el proyecto 
+
+>> django-admin startproject  rest_page
+
+4. iniciamos con la configuración inicial, por lo que necesitaremos crear 
+   la siguiente estructura de archivos 
+
+	-- settings
+		- __init__.py
+		- base.py
+		- local.py
+		- production.py
+En los archivos de local.py y production.py vamos a colocar el 
+- degub
+- las rutas permitidas 
+- la conexión a la base de datos 
+-las rutas estaticas
+
+lo demás se dejará en el archivo base y en el archivo wsgi.py vamos a actualizar la ruta del settings 
+para que arranque con el archivo local.py
+

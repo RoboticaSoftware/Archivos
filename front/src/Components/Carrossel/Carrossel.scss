@@ -1,0 +1,42 @@
+@import '../../css/styles.scss';
+.swiper-container{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 60vh;
+    margin: 5% 10% 0% 10%;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 1rem rgba($color-black, 0.6);
+}
+
+.slide-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*Paginación inactivo*/
+.swiper-pagination > .swiper-pagination-bullet {
+    background-color: $color-black;
+    opacity: 0.7;
+    border: solid rgba($color-black, 0.9);
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+/*Paginación activo */
+
+.swiper-pagination > .swiper-pagination-bullet-active {
+    background-color:rgba($color-background-botton_sup,0.7) !important;
+    border: solid rgba($color-black,0.9);
+    opacity: 0.8;
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+/*Botones de paginación*/
+
+.swiper-button-prev::after, .swiper-button-next::after  {
+    color: $color-background-botton_sup !important;
+    border: solid $color-background-botton_sup;
+}
