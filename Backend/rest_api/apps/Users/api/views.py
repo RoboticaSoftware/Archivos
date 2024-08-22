@@ -4,8 +4,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.db import IntegrityError
-from apps.Users.models import PublicUsers
-from apps.Users.api.serializers import PublicUsersSerializer
+from apps.Users.models import PublicUsers, DocumentType
+from apps.Users.api.serializers import PublicUsersSerializer, DocumentTypeSerializer
 
 class PublicUsersModelViewSet(ModelViewSet):
     """
@@ -54,5 +54,26 @@ class PublicUsersModelViewSet(ModelViewSet):
                 return Response(status=status.HTTP_201_CREATED, data=serializer.data)   
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
+
+
+class DocumentTypeModelViewSet(ModelViewSet):
+    """
+    """
+    serializer_class = DocumentTypeSerializer
+    queryset = DocumentType.objects.all()
+
+    def create(self, request):
+        '''
+        '''
+        serializer = DocumentTypeSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        try:
+            serializer.save()
+            return Response(status=status.HTTP_200_OK, data=serializer.data)
+        except IntegrityError as e:
+            data = {
+                'message': 'Tipo de documento ya existe'
+            }
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=data)
 
         

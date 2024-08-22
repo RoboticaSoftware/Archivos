@@ -16,7 +16,7 @@ export async function getPuplicUsersApi (formData) {
      * Esta función hace la petición fetch y devuelve la información del usuario 
      * si no encuentra el usuario devolverá un error 404 
      */
-    const url = `${BASE_API}/api/publicusers/(${formData.document},${formData.document_type})/`
+    const url = `${BASE_API}/api/publicusers/(${formData.document_type},${formData.document})/`
     const params = {
         method: "GET"
     };
@@ -125,7 +125,6 @@ export async function updatePublicUser (formData, setShowMessage,setPublicUser){
 
 
 
-
 export async function getDocumentTypeApi () {
     /**
      * Esta función hace la petición fetch a mi backend /api/publicusers/ y devuelve la información del usuario 
@@ -138,6 +137,7 @@ export async function getDocumentTypeApi () {
     const response = await fetch(url,params);
     if (response.status ===200) {
         const result = await response.json();
+        console.log(result)
         return result
     }
 
