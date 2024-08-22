@@ -10,7 +10,7 @@ class DocumentType(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.DocumentType_description
+        return self.DocumentType_code+'-'+self.DocumentType_description
 
 class PublicUsers(models.Model):
     public_user_dt = models.ForeignKey(DocumentType, on_delete=models.CASCADE)
