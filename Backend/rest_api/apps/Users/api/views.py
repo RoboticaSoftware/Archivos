@@ -69,7 +69,7 @@ class DocumentTypeModelViewSet(ModelViewSet):
         serializer.is_valid(raise_exception=True)
         try:
             serializer.save()
-            return Response(status=status.HTTP_200_OK, data=serializer.data)
+            return Response(status=status.HTTP_201_CREATED, data=serializer.data)
         except IntegrityError as e:
             data = {
                 'message': 'Tipo de documento ya existe'
