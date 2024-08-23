@@ -16,7 +16,8 @@ BASE_APPS = [
 ]
 
 LOCAL_APPS = [
-    'apps.Users'
+    'apps.Users',
+    'apps.Records'
 ]
 
 THIRD_APPS = [

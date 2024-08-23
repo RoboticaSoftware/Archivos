@@ -20,14 +20,14 @@ class PublicUsersModelViewSet(ModelViewSet):
         """
         elements = pk[1:-1].split(',')
         instance = get_object_or_404(PublicUsers,
-                                     public_user_dt=int(elements[0]),
-                                     public_user_number=elements[1])
+                                     pu_dt=int(elements[0]),
+                                     pu_number=elements[1])
         serializer = PublicUsersSerializer(instance)
         return Response(serializer.data)
     
     def create(self, request):
         serializer = PublicUsersSerializer(data=request.data)
-        required_fields = ['public_user_dt', 'public_user_number', 'public_user_name', 'public_user_email', 'public_user_phone']
+        required_fields = ['pu_dt', 'pu_number', 'pu_name', 'pu_email', 'pu_phone']
         
         for field in request.data.keys():
              print(field)
@@ -38,8 +38,8 @@ class PublicUsersModelViewSet(ModelViewSet):
         try:
             # Verifica si ya existe un usuario con la misma clave primaria
             existing_user = PublicUsers.objects.filter(
-                    public_user_number=request.data['public_user_number'],
-                    public_user_dt=request.data['public_user_dt']
+                    pu_number=request.data['pu_number'],
+                    pu_dt=request.data['pu_dt']
                 )
 
             if existing_user.exists():

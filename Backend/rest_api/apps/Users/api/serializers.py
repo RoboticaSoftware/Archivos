@@ -12,11 +12,11 @@ class PublicUsersSerializer(ModelSerializer):
         model = PublicUsers
         fields = [
             "id",
-            "public_user_dt",
-            "public_user_number",
-            "public_user_name",
-            "public_user_email",
-            "public_user_phone"
+            "pu_dt",
+            "pu_number",
+            "pu_name",
+            "pu_email",
+            "pu_phone"
         ]
 
     
@@ -30,6 +30,6 @@ class DocumentTypeSerializer(ModelSerializer):
         model = DocumentType
         fields = [
             "id",
-            "DocumentType_code", 
-            "DocumentType_description"
+            "dt_code", 
+            "dt_description"
         ]

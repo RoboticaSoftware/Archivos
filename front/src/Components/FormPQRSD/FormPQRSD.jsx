@@ -33,11 +33,11 @@ export function FormPQRSD() {
     const [publicUser, setPublicUser] = useState(
         {
             'id':null,
-            'public_user_td' : "",
-            'public_user_numberTd' : "",
-            'public_user_name' : "",
-            'public_user_email' : "",
-            'public_user_phone' : null ,
+            'pu_td' : "",
+            'pu_numberTd' : "",
+            'pu_name' : "",
+            'pu_email' : "",
+            'pu_phone' : null ,
             'enable' : false
         }
     );

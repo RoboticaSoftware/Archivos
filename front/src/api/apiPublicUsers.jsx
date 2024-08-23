@@ -30,11 +30,11 @@ export async function getPuplicUsersApi (formData) {
         notify(response.status);
         return {
             'id' : null,
-            'public_user_td' : formData.document_type,
-            'public_user_numberTd' : formData.document,
-            'public_user_name' : "",
-            'public_user_email' : "",
-            'public_user_phone' : null,
+            'pu_td' : formData.document_type,
+            'pu_numberTd' : formData.document,
+            'pu_name' : "",
+            'pu_email' : "",
+            'pu_phone' : null,
             'enable' : true 
         }
     }
@@ -72,7 +72,7 @@ export async function createPublicUser (formData, setShowMessage,setPublicUser){
         setShowMessage(true);
         let alertConfig = {};
         const result = await response.json();
-        if (result.public_user_email) {
+        if (result.pu_email) {
             alertConfig = {
                 color: "red",  // Color verde para indicar éxito
                 title: 'Error',
