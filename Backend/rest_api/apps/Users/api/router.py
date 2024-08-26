@@ -4,8 +4,8 @@ from apps.Users.api.views import PublicUsersModelViewSet, DocumentTypeModelViewS
 
 # URL routing for PublicUsers
 router_publicusers = DefaultRouter()
-router_publicusers.register(prefix="publicusers", basename="publicusers", viewset=PublicUsersModelViewSet)
+router_publicusers.register("publicusers", viewset=PublicUsersModelViewSet)
 
 # URL routing for DocumentType
 router_documentType = DefaultRouter()
-router_documentType.register(prefix="documenttype", basename="documenttype", viewset=DocumentTypeModelViewSet)
+router_documentType.register("documenttype", viewset=DocumentTypeModelViewSet)
