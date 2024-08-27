@@ -31,5 +31,5 @@ lo demás se dejará en el archivo base y en el archivo wsgi.py vamos a actualiz
 para que arranque con el archivo local.py
 
 
-Mi cambio ☻
+Mi cambio gay
 
