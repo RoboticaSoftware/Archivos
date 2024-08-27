@@ -11,7 +11,7 @@ export function Innovacion() {
       'text':'Escaneamos planos hasta de 1.270mm de ancho, largo casi ilimitado con una resolución de 1.200 dpi camara CCD escaneo a color, escala de gris, B&N Multipagina. PDF, TIF, JGEP, PNM, PNM, PNG, BMP'
     },
     {
-      'text':'La infraestructura de hardware y software nos permite digitalizr rápudamoente grandes cantidades de planos y libros de gran tamaño, encuadernados sin necesidad de desempaste.'
+      'text':'La infraestructura de hardware y software nos permite digitalizar rápidamente grandes cantidades de planos y libros de gran tamaño, encuadernados sin necesidad de desempaste.'
     }
   ]
 

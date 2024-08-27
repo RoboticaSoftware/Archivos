@@ -1,5 +1,6 @@
 import './App.scss'
 import {Navigation} from "./routes"
+import './tailwind.css'; 
 
 function App() {
   return (
@@ -10,4 +11,3 @@ function App() {
 }
 
 export default App
-// Alex manda
