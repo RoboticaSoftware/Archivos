@@ -30,3 +30,6 @@ En los archivos de local.py y production.py vamos a colocar el
 lo demás se dejará en el archivo base y en el archivo wsgi.py vamos a actualizar la ruta del settings 
 para que arranque con el archivo local.py
 
+
+Mi cambio ☻
+
