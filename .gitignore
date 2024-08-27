@@ -1,0 +1,5 @@
+# Ignorar node_modules dentro de la carpeta front
+/front/node_modules/
+
+# Ignorar toda la carpeta Backend_old
+/Backend_old/
