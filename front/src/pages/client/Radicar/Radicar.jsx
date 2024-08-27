@@ -1,5 +1,5 @@
 import {Cover, FormPQRSD} from "../../../Components"
-import React from 'react'
+import { ToastContainer} from 'react-toastify';
 
 export function Radicar() {
 
@@ -9,6 +9,7 @@ export function Radicar() {
         <div className="container_general">
           <FormPQRSD />
         </div>
+        <ToastContainer />
         
     </>
   )

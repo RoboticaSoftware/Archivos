@@ -30,8 +30,8 @@ export async function getPuplicUsersApi (formData) {
         notify(response.status);
         return {
             'id' : null,
-            'pu_td' : formData.document_type,
-            'pu_numberTd' : formData.document,
+            'pu_dt' : formData.document_type,
+            'pu_number' : formData.document,
             'pu_name' : "",
             'pu_email' : "",
             'pu_phone' : null,

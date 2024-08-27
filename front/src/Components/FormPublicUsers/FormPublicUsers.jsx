@@ -17,10 +17,6 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
         setPublicUser({...publicUser,[e.target.name]:e.target.value})
         setShowMessage(false)
     };
-    const getPublicUser2 = (e) => {
-        setPublicUser({...publicUser,[e.target.name]:e.target.checked})
-        setShowMessage(false)
-    };
 
      /* Enviara el formulario cuando se tenga el api del backend */
      const sendPublicUser = async(e) => {
@@ -65,7 +61,7 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             required
             readOnly
             onChange={getPublicUser} 
-            defaultValue={publicUser.pu_numberdt}
+            defaultValue={publicUser.pu_number}
             />
         </Form.Field>
         <Form.Field >

@@ -32,13 +32,14 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
     
 
     const getIdentification = (e) => {
+        e.preventDefault()
         setIdentification({...identification,[e.target.name]:e.target.value})
         // Esto oculta el formulario de usuarios al cambiar alguna opción
         setPublicUser((prev) => (
             {
                 'id':null,
-                'pu_td' : "",
-                'pu_numberTd' : "",
+                'pu_dt' : "",
+                'pu_number' : "",
                 'pu_name' : "",
                 'pu_email' : "",
                 'pu_phone' : null ,
@@ -52,18 +53,19 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
     const sendPublicUser = async(e) => {
         e.preventDefault()
 
-        // Esto me permite siempre que se de clic en buscar redibujar el formulario de usuario
+        
         setPublicUser((prev) => ({
             ...prev, enable : false
         }));
 
         if (identification.anonymous === '1') {
-            const result = await getPuplicUsersApi(identification);
+            // Esto me permite siempre que se de clic en buscar redibujar el formulario de usuario 
+            const result = await getPuplicUsersApi(identification); 
             setPublicUser(result);
         }else {
             setPublicUser({
-                'pu_td' : null,
-                'pu_numberTd' : "NA",
+                'pu_dt' : null,
+                'pu_number' : "NA",
                 'pu_name' : "",
                 'pu_email' : "",
                 'pu_phone' : null,

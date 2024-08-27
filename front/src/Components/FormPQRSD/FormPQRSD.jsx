@@ -4,9 +4,8 @@ import {SearchPublicUser} from '../SearchPublicUser'
 import {FormPublicUsers} from '../FormPublicUsers'
 import {Direction} from "../Direction"
 import {PP} from "../PP";
-import {getFilingTypeApi, createFilingApi,createFilingAddressApi,createFilingUsersApi} from '../../api/apiFilings'
-import {getDocumentTypeApi} from '../../api/apiPublicUsers'
-import { ToastContainer, toast } from 'react-toastify';
+import {getRecordsTypeApi, createFilingApi,createFilingAddressApi,createFilingUsersApi} from '../../api/apiRecords'
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -14,14 +13,14 @@ import "./FormPQRSD.scss"
 
 export function FormPQRSD() {
     
-    /**Estados */
+    /**states */
 
     const [visible, setVisible] = useState(false);
     const [sendAddress, setSendAddress] = useState(false);
     const [sendUser, setSendUser] = useState(false);
     const [direction, setDirection] = useState({});
     const [documentTypes, setDocumentTypes] = useState([]);
-    const [flingsTypes, setFilingsTypes] = useState([]);
+    const [recordsTypes, setRecordsTypes] = useState([]);
     const [showMessage, setShowMessage ] = useState(false);
     const [showPQRSD, setShowPQRSD ] = useState(false);
 
@@ -33,8 +32,8 @@ export function FormPQRSD() {
     const [publicUser, setPublicUser] = useState(
         {
             'id':null,
-            'pu_td' : "",
-            'pu_numberTd' : "",
+            'pu_dt' : "",
+            'pu_number' : "",
             'pu_name' : "",
             'pu_email' : "",
             'pu_phone' : null ,
@@ -44,8 +43,8 @@ export function FormPQRSD() {
 
     useEffect(() => {
         const fetchData = async () => {
-              const data = await getFilingTypeApi();
-              setFilingsTypes(data);
+              const data = await getRecordsTypeApi();
+              setRecordsTypes(data);
         };
         fetchData();
     }, [])
@@ -133,7 +132,7 @@ export function FormPQRSD() {
             {/** Formulario inicial */}
             <SearchPublicUser setShowPQRSD = {setShowPQRSD} setPublicUser = {setPublicUser} documentTypes = {documentTypes} setDocumentTypes = {setDocumentTypes} />
             {/**............................................................................................. */}
-
+            
             {/** Formulario del usuario */}
             {publicUser.enable 
             ?
@@ -143,6 +142,8 @@ export function FormPQRSD() {
             />
             : null
             }
+            
+            {/** Formulario de la PQRS */}
             { showPQRSD
             ? 
             <>
@@ -151,13 +152,13 @@ export function FormPQRSD() {
                     <h3 className='subtitle_general left'>Tipo de petición</h3>
                     <select className="text_label ui fluid dropdown"
                     required
-                    name='Filings_td'
+                    name='r_rt'
                     onChange={getPQRSD}
                     >
                         <option value=""></option>
-                        {flingsTypes.map((item) => (
-                            <option key={item.id} value={item.id}>
-                                {item.FilingsType_description}
+                        {recordsTypes.map((item) => (
+                            <option key={`rt_${item.id}`} value={item.id}>
+                                {item.rt_description}
                             </option>
                         ))}
                     </select>
@@ -193,19 +194,6 @@ export function FormPQRSD() {
                     </>
                     : null
                 }
-                {/** 
-                <Form.Field>
-                    <Input 
-                        className='input_login'
-                        icon='id card' 
-                        iconPosition='left' 
-                        placeholder='Agregar archvios' 
-                        name='Filings_attached_file'
-                        type='file'
-                        onChange={getPQRSDFile} 
-                    />
-                </Form.Field>
-                */}
 
                 <Form.Field className='ui checkbox'>
                     <input type='checkbox' required id='aceptarTerminos'/>
@@ -244,18 +232,19 @@ export function FormPQRSD() {
                 </Form.Field>
                 }
                 
+                
             </Form>
             
             </>
             : null
 
             }
-            <ToastContainer />
-            {/** 
-            <PP />
-            <Direction />
-            */}
             
+            
+
+
+ 
+
             
 
         </>
