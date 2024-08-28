@@ -16,7 +16,8 @@ class PublicUsersSerializer(ModelSerializer):
             "pu_number",
             "pu_name",
             "pu_email",
-            "pu_phone"
+            "pu_phone", 
+            "pu_address"
         ]
 
     

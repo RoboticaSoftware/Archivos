@@ -25,16 +25,8 @@ class PublicUsersModelViewSet(ModelViewSet):
         serializer = PublicUsersSerializer(instance)
         return Response(serializer.data)
     
-    def create(self, request):
+    '''def create(self, request):
         serializer = PublicUsersSerializer(data=request.data)
-        required_fields = ['pu_dt', 'pu_number', 'pu_name', 'pu_email', 'pu_phone']
-        
-        for field in request.data.keys():
-             print(field)
-             if field not in required_fields:
-                data = {field: 'Este campo es obligatorio.'}
-                return Response(status=status.HTTP_400_BAD_REQUEST, data=data)
-             
         try:
             # Verifica si ya existe un usuario con la misma clave primaria
             existing_user = PublicUsers.objects.filter(
@@ -53,7 +45,7 @@ class PublicUsersModelViewSet(ModelViewSet):
                 serializer.save()
                 return Response(status=status.HTTP_201_CREATED, data=serializer.data)   
         else:
-            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)'''
 
 
 class DocumentTypeModelViewSet(ModelViewSet):

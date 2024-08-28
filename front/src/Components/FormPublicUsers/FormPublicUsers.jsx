@@ -17,12 +17,8 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
         setPublicUser({...publicUser,[e.target.name]:e.target.value})
         setShowMessage(false)
     };
-    const getPublicUser2 = (e) => {
-        setPublicUser({...publicUser,[e.target.name]:e.target.checked})
-        setShowMessage(false)
-    };
 
-     /* Enviara el formulario cuando se tenga el api del backend */
+     /* Enviara el formulario al backend */
      const sendPublicUser = async(e) => {
         e.preventDefault()
         if (publicUser.id=== null) {
@@ -42,14 +38,14 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             <select className="text_label ui fluid dropdown"
             required
             disabled
-            name='public_user_td'
+            name='pu_dt'
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_td}
+            defaultValue={publicUser.pu_dt}
             >
                 <option value=""></option>
                 {documentTypes.map((item) => (
                     <option key={item.id} value={item.id}>
-                        {item.DocumentType_code} - {item.DocumentType_description}
+                        {item.dt_code} - {item.dt_description}
                     </option>
                 ))}
             </select>
@@ -61,12 +57,12 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             icon='id card' 
             iconPosition='left' 
             placeholder='Ingrese su número de identificación' 
-            name='public_user_numberTd'
+            name='pu_number'
             type='text'
             required
             readOnly
             onChange={getPublicUser} 
-            defaultValue={publicUser.public_user_numberTd}
+            defaultValue={publicUser.pu_number}
             />
         </Form.Field>
         <Form.Field >
@@ -76,11 +72,11 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             icon='user' 
             iconPosition='left' 
             placeholder='Ingrese su nombre o su razon social' 
-            name='public_user_name'
+            name='pu_name'
             type='text'
             required
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_name}
+            defaultValue={publicUser.pu_name}
             />
         </Form.Field>
         
@@ -91,11 +87,11 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             icon='envelope outline' 
             iconPosition='left' 
             placeholder='Ingrese su email' 
-            name='public_user_email'
+            name='pu_email'
             type='email'
             required
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_email}
+            defaultValue={publicUser.pu_email}
             />
         </Form.Field>
         <Form.Field >
@@ -105,11 +101,11 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
             icon='phone volume' 
             iconPosition='left' 
             placeholder='Ingrese su número telefónico' 
-            name='public_user_phone'
+            name='pu_phone'
             type='number'
             required
             onChange={getPublicUser} 
-            defaultValue={publicUser.public_user_phone}
+            defaultValue={publicUser.pu_phone}
             />
         </Form.Field>
         {publicUser.id

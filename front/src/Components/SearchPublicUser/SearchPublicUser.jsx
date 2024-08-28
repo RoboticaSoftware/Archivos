@@ -37,11 +37,11 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
         setPublicUser((prev) => (
             {
                 'id':null,
-                'public_user_td' : "",
-                'public_user_numberTd' : "",
-                'public_user_name' : "",
-                'public_user_email' : "",
-                'public_user_phone' : null ,
+                'pu_dt' : "",
+                'pu_number' : "",
+                'pu_name' : "",
+                'pu_email' : "",
+                'pu_phone' : null ,
                 'enable' : false
             }
         ));
@@ -62,11 +62,11 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
             setPublicUser(result);
         }else {
             setPublicUser({
-                'public_user_td' : null,
-                'public_user_numberTd' : "NA",
-                'public_user_name' : "",
-                'public_user_email' : "",
-                'public_user_phone' : null,
+                'pu_dt' : null,
+                'pu_number' : "NA",
+                'pu_name' : "",
+                'pu_email' : "",
+                'pu_phone' : null,
                 'enable' : false,
                 'id' : null 
             });
@@ -107,7 +107,7 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                         <option value=""></option>
                         {documentTypes.map((item) => (
                             <option key={item.id} value={item.id}>
-                                {item.DocumentType_code} - {item.DocumentType_description}
+                                {item.dt_code} - {item.dt_description}
                             </option>
                         ))}
                     </select>
