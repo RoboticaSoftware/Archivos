@@ -1,13 +1,47 @@
-.container_map{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
+.container_map {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.map {
+  width: 80%;
+  height: auto;
+}
+.map_svg path {
+  fill: #cdd7f8;
+  cursor: pointer;
+  transition: fill 0.3s ease;
+  padding: 80%;
 }
 
-.map{
-    width: 80%;
-    height: auto;
+.map_svg path:hover {
+  fill: #0c545e;
+}
+
+.hover-image {
+  transition: opacity 0.3s;
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hover-image:hover {
+  opacity: 0.9;
+}
+.map_svg path {
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.map_svg path:hover {
+  fill: #0c545e; /* Cambia el color al pasar el cursor */
+}
+
+.map_svg path.focused {
+  fill: #0a2f33; /* Cambia el color cuando está clicado/enfocado */
+  stroke: #0c545e;
+  stroke-width: 2;
+  transform: scale(1.1); /* Amplía el elemento en un 10% */
 }

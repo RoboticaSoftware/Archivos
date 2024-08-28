@@ -1,142 +1,131 @@
-@import '../../css/styles.scss';
+@import "../../css/styles.scss";
 // Estilos top bar *********************************
 
-// Estilo general 
-.top-bar{
-    background-color: $color-background-bar;
-    height: 5rem;
-    display: flex;
-    align-items: center;
+// Estilo general
+.top-bar {
+  background-color: $color-background-bar;
+  height: 5rem;
+  display: flex;
+  align-items: center;
 }
 
-//Estilo de la imagen 
-.logo_gov{
-    width: 65%;
-    height: auto;
-    
+//Estilo de la imagen
+.logo_gov {
+  width: 65%;
+  height: auto;
 }
 
 .logo_gov a {
-    display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
-    width: 15%; 
-    margin-left: 4%;   /* Ancho del enlace igual al contenedor */
+  display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
+  width: 15%;
+  margin-left: 4%; /* Ancho del enlace igual al contenedor */
 }
 
-.logo_gov_img{
-    height: 100%;
-    width: 10rem;
-    margin: 0% 0% 0% 4%;
+.logo_gov_img {
+  height: 100%;
+  width: 10rem;
+  margin: 0% 0% 0% 4%;
 }
-// Estilo barra 
+// Estilo barra
 .bar-menu-social-media {
-    
-    height: 60%;
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Alinea a la derecha */
-    margin-right: 0;
+  height: 60%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinea a la derecha */
+  margin-right: 0;
 }
 
-.menu_social_link{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Alinea a la derecha */
-    width: 80%;
-    height: 100%;
+.menu_social_link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Alinea a la derecha */
+  width: 80%;
+  height: 100%;
 }
 
 .item_social {
-    color: $color-icon-in;
-    width: 3rem;
-
+  color: $color-icon-in;
+  width: 3rem;
 }
 
-.item_user{
-    color: $color-icon-in;
-    width: 3rem;
-    margin-right: 0;
-    margin-left: 2rem;
+.item_user {
+  color: $color-icon-in;
+  width: 3rem;
+  margin-right: 0;
+  margin-left: 2rem;
 }
 
-.item_mail{
-    color: $color-icon-in;
-    width: 8rem;
-    margin-right: 0;
+.item_mail {
+  color: $color-icon-in;
+  width: 8rem;
+  margin-right: 0;
 }
 
 // EStilos barra principal ******************
 
 .menu-bar {
-    height: 10rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
-
 
 // Configuración del logo
 
-.logo{
-    height: 80%;
-    width: 30%;
+.logo {
+  height: 80%;
+  width: 30%;
 }
 
-.logo_AE_img{
-    width: 55%;
-    height: auto;
-    margin: 0% 0% 0% 10%;
+.logo_AE_img {
+  width: 55%;
+  height: auto;
+  margin: 0% 0% 0% 10%;
 }
 
-
-.main_menu{
-    height: 80%;
-    width: 70%;
-    margin-right: 2%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    
+.main_menu {
+  height: 80%;
+  width: 70%;
+  margin-right: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.item_menu{
-    padding: 1rem;
-    text-align: center;
-    font-family: "Poppins", Helvetica, sans-serif;
-    font-size: 1.5rem;
-    color: $color-text;
-    transition: 300ms;
-
+.item_menu {
+  padding: 1rem;
+  text-align: center;
+  font-family: "Poppins", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: $color-text;
+  transition: 300ms;
 }
 
-.item_menu_press{
-    padding: 0.8rem;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-align: center;
-    font-family: "Poppins", Helvetica, sans-serif;
-    color: $color-title;
-    border-bottom: solid $color-border;
-    background-color: $color-background-secundary;
+.item_menu_press {
+  padding: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  font-family: "Poppins", Helvetica, sans-serif;
+  color: $color-title;
+  border-bottom: solid $color-border;
+  background-color: $color-background-secundary;
 }
 
+.nav-container img {
+  max-height: 40px;
+  margin-right: 10px;
+}
 
+@media (max-width: 768px) {
   .nav-container img {
-    max-height: 40px;
-    margin-right: 10px;
+    max-height: 30px;
   }
-  
-  @media (max-width: 768px) {
-    .nav-container img {
-      max-height: 30px;
-    }
-  }
-  
-  .top-bar .logo_gov_img {
-    max-width: 100%;
-    height: auto;
-  }
-  
+}
 
-
+.top-bar .logo_gov_img {
+  max-width: 100%;
+  height: auto;
+}
