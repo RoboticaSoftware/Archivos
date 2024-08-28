@@ -16,7 +16,7 @@ export async function getPuplicUsersApi (formData) {
      * Esta función hace la petición fetch y devuelve la información del usuario 
      * si no encuentra el usuario devolverá un error 404 
      */
-    const url = `${BASE_API}/api/publicusers/(${formData.document},${formData.document_type})/`
+    const url = `${BASE_API}/api/publicusers/(${formData.document_type},${formData.document})/`
     const params = {
         method: "GET"
     };
@@ -30,11 +30,11 @@ export async function getPuplicUsersApi (formData) {
         notify(response.status);
         return {
             'id' : null,
-            'public_user_td' : formData.document_type,
-            'public_user_numberTd' : formData.document,
-            'public_user_name' : "",
-            'public_user_email' : "",
-            'public_user_phone' : null,
+            'pu_dt' : formData.document_type,
+            'pu_number' : formData.document,
+            'pu_name' : "",
+            'pu_email' : "",
+            'pu_phone' : null,
             'enable' : true 
         }
     }
@@ -54,9 +54,10 @@ export async function createPublicUser (formData, setShowMessage,setPublicUser){
         },
         body:JSON.stringify(formData)
     };
-
+    console.log(params)
     const response = await fetch(url,params);
-    if (response.status ===200) {
+    console.log(response)
+    if (response.status ===201) {
         setShowMessage(true);
         const result = await response.json();
         setPublicUser((prev) => ({...prev, ...result}))
@@ -97,6 +98,7 @@ export async function updatePublicUser (formData, setShowMessage,setPublicUser){
     /**
      * Esta función me permite enviar una solicitud http para actualizar un usuario público con su id
      */
+    console.log(formData)
     const url = `${BASE_API}/api/publicusers/${formData.id}/`
     const params = {
         method: "PATCH",

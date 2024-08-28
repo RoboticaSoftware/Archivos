@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import {getFilingsApi} from '../../api/apiFilings'
+import {getFilingsApi} from '../../api/apiRecords'
 
 
 import "./TablePQRSD.scss"

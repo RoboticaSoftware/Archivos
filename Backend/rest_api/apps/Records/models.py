@@ -21,7 +21,7 @@ class Records(models.Model):
     r_number = models.CharField("Número de radicado", max_length=50, unique=True, blank=True, null=True)
     r_description = models.CharField("Descripción", max_length=50)
     r_receive_at_home = models.BooleanField(default=False)
-    r_user = models.ForeignKey(PublicUsers, on_delete=models.CASCADE)
+    r_user = models.ForeignKey(PublicUsers, on_delete=models.CASCADE, blank=True, null= True )
     r_attached_file = models.CharField("Archivos Adjuntos", max_length=255, blank=True, null= True)
 
     def save(self, *args, **kwargs):

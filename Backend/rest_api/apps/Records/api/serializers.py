@@ -8,6 +8,7 @@ class RecordTypeSerializer(ModelSerializer):
     class Meta:
         model = RecordType
         fields = [
+            "id",
             "rt_code",
             "rt_description"
         ]
@@ -19,6 +20,7 @@ class RecordSerializer(ModelSerializer):
     class Meta:
         model = Records
         fields = [
+            "id",
             "r_rt",
             "r_number",
             "r_description",
