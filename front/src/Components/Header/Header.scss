@@ -1,163 +1,142 @@
 @import '../../css/styles.scss';
+// Estilos top bar *********************************
 
-.top-bar {
+// Estilo general 
+.top-bar{
     background-color: $color-background-bar;
     height: 5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
 }
 
-
-.logo_gov {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: auto;
-    margin-left: 8rem;
-
-    a {
-        display: block;
-        height: 100%;
-    }
-
-    .logo_gov_img {
-        height: 65%;
-        min-height: 30px;
-        min-width: 150px;
-        margin-top: 7%;
-        margin-left: 45%;
-        
-    }
-}
-
-.bar-menu-social-media {
-    display: flex;
-    align-items: center;
-    margin-right: 20%;
+//Estilo de la imagen 
+.logo_gov{
+    width: 65%;
+    height: auto;
     
-    .menu_social_link {
-        display: flex;
-        align-items: center;
-
-        .item_social {
-            margin-left: 5%;
-            margin-right: 50%;
-        }
-    }
 }
 
-.nav-container {
+.logo_gov a {
+    display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
+    width: 15%; 
+    margin-left: 4%;   /* Ancho del enlace igual al contenedor */
+}
+
+.logo_gov_img{
+    height: 100%;
+    width: 10rem;
+    margin: 0% 0% 0% 4%;
+}
+// Estilo barra 
+.bar-menu-social-media {
+    
+    height: 60%;
+    width: 30%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end; /* Alinea a la derecha */
+    margin-right: 0;
 }
+
+.menu_social_link{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea a la derecha */
+    width: 80%;
+    height: 100%;
+}
+
+.item_social {
+    color: $color-icon-in;
+    width: 3rem;
+
+}
+
+.item_user{
+    color: $color-icon-in;
+    width: 3rem;
+    margin-right: 0;
+    margin-left: 2rem;
+}
+
+.item_mail{
+    color: $color-icon-in;
+    width: 8rem;
+    margin-right: 0;
+}
+
+// EStilos barra principal ******************
 
 .menu-bar {
     height: 10rem;
     width: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.logo_AE_img {
-    width: auto;
-    height: 5rem;
+
+// Configuración del logo
+
+.logo{
+    height: 80%;
+    width: 30%;
 }
 
-.main_menu {
+.logo_AE_img{
+    width: 55%;
+    height: auto;
+    margin: 0% 0% 0% 10%;
+}
+
+
+.main_menu{
+    height: 80%;
+    width: 70%;
+    margin-right: 2%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    
 }
 
-// Media queries para pantallas pequeñas
-@media (max-width: 1428px) {
+.item_menu{
+    padding: 1rem;
+    text-align: center;
+    font-family: "Poppins", Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: $color-text;
+    transition: 300ms;
 
-    .logo_gov {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        width: auto;
-        margin-left: 6rem;
-    
-        a {
-            display: block;
-            height: 100%;
-        }
-    
-        .logo_gov_img {
-            height: 55%;
-            min-height: 30px;
-            min-width: 150px;
-            margin-top: 7%;
-            margin-left: 5%;
-            
-        }
-    }
-    .bar-menu-social-media {
-        display: flex;
-    }
-
-    .bar-menu-social-media {
-        display: flex;
-        align-items: center;
-        margin-right: 15%;
-        
-        .menu_social_link {
-            display: flex;
-            align-items: center;
-    
-            .item_social {
-                margin-left: 0%;
-                margin-right: 10%;
-            }
-        }
-    }
-
-    .nav-container {
-        flex-direction: column;
-    }
-
-    .main_menu, .logo_AE_img {
-        display: none;
-    }
-
-    .mobile-menu {
-        display: block;
-    }
-
-    .logo_gov {
-        margin-left: 1rem;
-
-        .logo_gov_img {
-            min-height: 20px;
-            min-width: 90px;
-        }
-    }
 }
 
-@media (max-width: 1025px) {
-    .bar-menu-social-media, .mobile-menu {
-        display: flex;
-    }
-
-    .nav-container {
-        flex-direction: column;
-    }
-
-    .main_menu, .logo_AE_img {
-        display: none !important;
-    }
-
-    .logo_gov {
-        margin-left: 1rem;
-
-        .logo_gov_img {
-            min-height: 20px;
-            min-width: 90px;
-        }
-    }
+.item_menu_press{
+    padding: 0.8rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Poppins", Helvetica, sans-serif;
+    color: $color-title;
+    border-bottom: solid $color-border;
+    background-color: $color-background-secundary;
 }
+
+
+  .nav-container img {
+    max-height: 40px;
+    margin-right: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .nav-container img {
+      max-height: 30px;
+    }
+  }
+  
+  .top-bar .logo_gov_img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+

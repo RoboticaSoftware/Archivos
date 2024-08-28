@@ -1,49 +1,55 @@
-@import '../../css/styles.scss';
+@import "../../css/styles.scss";
 
+/* Contenedor del Swiper */
 .swiper-container {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    height: 60vh;
-    margin: 5% 10% 0% 10%;
-    border-radius: 1.5rem;
-    box-shadow: 0 0 1rem rgba($color-black, 0.6);
-    perspective: 1000px; // Perspectiva para el efecto 3D
+  display: flex;
+  align-items: center;
+  width: 80%;
+  height: 60vh;
+  margin: 5% 10% 0% 10%;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 1rem rgba($color-black, 0.6);
+  position: relative; /* Asegúrate de que el contenedor tenga posición relativa */
 }
 
+/* Estilos para las imágenes del slide */
 .slide-item img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 1.5rem;
-    box-shadow: 0 0 1rem rgba($color-black, 0.6);
-    transition: transform 0.5s;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
-.swiper-slide-active img {
-    transform: scale(1.1);  // Zoom en el slide activo
-}
-
-/* Paginación inactivo */
+/* Paginación inactiva */
 .swiper-pagination > .swiper-pagination-bullet {
-    background-color: $color-black;
-    opacity: 0.7;
-    border: solid rgba($color-black, 0.9);
-    padding: 0.8rem;
-    border-radius: 50%;
+  background-color: $color-black;
+  opacity: 0.7;
+  border: solid rgba($color-black, 0.9);
+  padding: 0.8rem;
+  border-radius: 50%;
 }
 
-/* Paginación activo */
+/* Paginación activa */
 .swiper-pagination > .swiper-pagination-bullet-active {
-    background-color: rgba($color-background-botton_sup, 0.7) !important;
-    border: solid rgba($color-black, 0.9);
-    opacity: 0.8;
-    padding: 0.8rem;
-    border-radius: 50%;
+  background-color: rgba($color-background-botton_sup, 0.7) !important;
+  border: solid rgba($color-black, 0.9);
+  opacity: 0.8;
+  padding: 0.8rem;
+  border-radius: 50%;
 }
-
-/* Botones de navegación */
-.swiper-button-prev::after, .swiper-button-next::after {
-    color: $color-background-botton_sup !important;
-    font-size: 2rem;  // Ajusta el tamaño de las flechas
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  top: calc(50% - 20px);
+  position: absolute;
+  background: rgba(33, 89, 126, 0.5);
+  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 2;
 }

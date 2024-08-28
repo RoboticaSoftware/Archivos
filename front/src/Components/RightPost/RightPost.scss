@@ -1,30 +1,32 @@
-@import '../../css/styles.scss'; 
+@import "../../css/styles.scss";
 
-.right_post{
-    display: flex;
-    align-items: center;
+.right_post {
+  display: flex;
+  align-items: center;
 }
 
 /*Texto*/
-.text_right_post{
-    width: 60%;
-    display: block;
-    align-items: center;
-    padding: 2%;
+.text_right_post {
+  width: 60%;
+  display: block;
+  align-items: center;
+  padding: 2%;
 }
-
 
 /*Imagen*/
 
-.container_picture_right_post{
-    width: 40%;
-    height: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.container_picture_right_post {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
-.picture_right_post{
-    width: 80%;
-    height: 80%
+.picture_right_post {
+  width: 80%;
+  height: 80%;
+  margin-top: 20px;
+  border-radius: 5%;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
