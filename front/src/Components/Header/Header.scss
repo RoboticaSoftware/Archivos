@@ -1,63 +1,70 @@
 @import '../../css/styles.scss';
 
-// Estilos top bar *********************************
 .top-bar {
     background-color: $color-background-bar;
     height: 5rem;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Para alinear el logo y los iconos de forma más eficiente */
+    justify-content: space-between;
+    width: 100%;
 }
+
 
 .logo_gov {
-    flex: 1;
-    height: auto;
-}
-
-.logo_gov a {
-    display: block;
-    width: 10%;
-    margin-left: 10%; /* Margen izquierdo */
-    
-}
-
-.logo_gov_img {
+    display: flex;
+    align-items: center;
     height: 100%;
-    width: auto; /* Ajusta el tamaño del logo */
-    margin: 0 0 0 4%;
+    width: auto;
+    margin-left: 8rem;
+
+    a {
+        display: block;
+        height: 100%;
+    }
+
+    .logo_gov_img {
+        height: 65%;
+        min-height: 30px;
+        min-width: 150px;
+        margin-top: 7%;
+        margin-left: 45%;
+        
+    }
 }
 
 .bar-menu-social-media {
-    display: none; /* Oculta en pantallas pequeñas */
-}
-
-.menu_social_link {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    height: 100%;
+    margin-right: 20%;
+    
+    .menu_social_link {
+        display: flex;
+        align-items: center;
+
+        .item_social {
+            margin-left: 5%;
+            margin-right: 50%;
+        }
+    }
 }
 
-// Estilos barra principal ******************
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Para alinear logo y menú de navegación */
+    justify-content: space-between;
 }
 
 .menu-bar {
     height: 10rem;
     width: 100%;
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     margin-bottom: 1.5rem;
 }
 
-// Configuración del logo
 .logo_AE_img {
-    width: 100%;
-    height: 3rem; /* Ajusta según sea necesario */
+    width: auto;
+    height: 5rem;
 }
 
 .main_menu {
@@ -66,29 +73,91 @@
     justify-content: flex-end;
 }
 
-// Menú hamburguesa
-@media (max-width: 1170px) {
+// Media queries para pantallas pequeñas
+@media (max-width: 1428px) {
+
+    .logo_gov {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: auto;
+        margin-left: 6rem;
+    
+        a {
+            display: block;
+            height: 100%;
+        }
+    
+        .logo_gov_img {
+            height: 55%;
+            min-height: 30px;
+            min-width: 150px;
+            margin-top: 7%;
+            margin-left: 5%;
+            
+        }
+    }
     .bar-menu-social-media {
-        display: flex; /* Muestra los iconos en pantallas pequeñas */
+        display: flex;
+    }
+
+    .bar-menu-social-media {
+        display: flex;
+        align-items: center;
+        margin-right: 15%;
+        
+        .menu_social_link {
+            display: flex;
+            align-items: center;
+    
+            .item_social {
+                margin-left: 0%;
+                margin-right: 10%;
+            }
+        }
     }
 
     .nav-container {
         flex-direction: column;
     }
 
-    .main_menu {
-        display: none; /* Oculta el menú en pantallas pequeñas */
-    }
-
-    .logo_AE_img {
-        display: none;  
-    }
-
-    .nav-container .menu-social_link {
-        display: none; /* Opcional: si quieres ocultar los iconos en pantallas pequeñas */
+    .main_menu, .logo_AE_img {
+        display: none;
     }
 
     .mobile-menu {
-        display: block; /* Muestra el menú hamburguesa en pantallas pequeñas */
+        display: block;
+    }
+
+    .logo_gov {
+        margin-left: 1rem;
+
+        .logo_gov_img {
+            min-height: 20px;
+            min-width: 90px;
+        }
+    }
+}
+
+@media (max-width: 1025px) {
+    .bar-menu-social-media, .mobile-menu {
+        display: flex;
+    }
+
+    .nav-container {
+        flex-direction: column;
+    }
+
+    .main_menu, .logo_AE_img {
+        display: none !important;
+    }
+
+    .logo_gov {
+        margin-left: 1rem;
+
+        .logo_gov_img {
+            min-height: 20px;
+            min-width: 90px;
+        }
     }
 }
