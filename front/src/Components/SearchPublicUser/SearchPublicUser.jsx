@@ -1,7 +1,8 @@
 import {useState, useEffect, useRef} from 'react'
 import {getPuplicUsersApi, getDocumentTypeApi} from "../../api/apiPublicUsers"
 
-import "./SearchPublicUser.scss"
+import "../FormPQRSD/FormPQRSD.css"
+
 import { Input,Button, Form } from 'semantic-ui-react'
 
 export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, setDocumentTypes}) {
@@ -72,13 +73,13 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
             });
         }
     }
-
+    
     return (
         <>
-        <Form className='form_border' onSubmit={sendPublicUser} action="#">
+        <Form className='form-pqrsd' onSubmit={sendPublicUser} action="#">
             <Form.Field >   
-                <h3 className='subtitle_general left'>Tipo de solicitud</h3>
-                <select className="text_label ui fluid dropdown"
+                <h3 className='form-pqrsd__subtitle left'>Tipo de solicitud</h3>
+                <select className="form-pqrsd__input ui fluid dropdown"
                 required
                 name='anonymous'
                 onChange={getIdentification}
@@ -86,20 +87,18 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                     <option value="0">Anonima</option>
                     <option value="1">En nombre propio</option>
                 </select>
-                <br />
-                <p className='content_text_anonymous'>
+                <p className='form-pqrsd__text'>
                     Seleccione <strong>Anonima</strong> solo si no desea registrar su información personal de contacto. Recuerde que, al seleccionar esta opción,
                      usted acepta las condiciones conforme a lo establecido en el artículo 38 de la Ley 190 de 1995; artículo 69; de la 
                      Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005.</p>
-                <br />
             </Form.Field>
             {identification.anonymous === '1'
             ?
             <>
                 <Form.Field>
-                    <h3 className='subtitle_general left'>Tipo de documento de identidad</h3>
+                    <h3 className='form-pqrsd__subtitle left'>Tipo de documento de identidad</h3>
                     <select
-                        className="text_label ui fluid dropdown"
+                        className="form-pqrsd__input ui fluid dropdown"
                         required={identification.anonymous === '1' ? true : false}
                         name='document_type'
                         onChange={getIdentification}
@@ -113,9 +112,9 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                     </select>
                 </Form.Field>
                 <Form.Field >
-                    <h3 className='subtitle_general left'>Número de identificación</h3>
+                    <h3 className='form-pqrsd__subtitle left'>Número de identificación</h3>
                     <Input 
-                    className='input_login'
+                    className='form-pqrsd__input'
                     icon='id card' 
                     iconPosition='left' 
                     placeholder='Ingrese su número de identificación' 
@@ -128,11 +127,12 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                 </Form.Field>
             </>
             : null}
-            <Form.Field>
-                <br />
+            <Form.Field className='form-pqrsd__button-container'>
                 {identification.anonymous === '1'
-                ? <Button type='submit' className = 'botton_general' >Buscar</Button>
-                : <Button type='button' className = 'botton_general' onClick={showPQRSD} >Siguiente</Button>}
+                ? <Button className='button' type='submit' >
+                    Buscar
+                </Button>
+                : <Button className='button' type='button' onClick={showPQRSD} >Siguiente</Button>}
             </Form.Field>
         </Form>
         </>

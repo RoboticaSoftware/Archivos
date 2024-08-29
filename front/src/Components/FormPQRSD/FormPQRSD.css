@@ -1,0 +1,104 @@
+@import '../../css/styles.scss';
+
+.form-pqrsd {
+    width: 100%;
+    display: block;
+    align-items: center; /* Centra otros elementos */
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.form-pqrsd__input {
+    font-size: 1.4rem !important;
+    border-radius: 1rem !important;  
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+}
+
+.form-pqrsd__input .icon {
+    font-size: 1.3rem !important;
+}
+
+.form-pqrsd__subtitle {
+    font-size: 1.8rem;
+}
+
+.form-pqrsd__text{
+    font-size: 1.5rem;
+    text-align: justify;
+    padding: 0.8rem 0;
+}
+
+.form-pqrsd__button-container {
+    margin: 0; 
+    width: auto; 
+    text-align: left; 
+    padding-bottom: 1.5rem;
+}
+
+.form-pqrsd__button-container .button {
+    display: flex;
+    align-items: center;
+    background: #cccfd1 !important; /* Color base del botón */
+    font-size: 1.4rem !important;
+    margin-top: 0.5rem !important;
+    margin-right: 1rem !important;
+    box-shadow: 2px 2px 4px rgba(142, 145, 147, 0.4), -2px -2px 4px rgba(142, 145, 147, 0.4) !important; /* Sombras en tonos azules */
+    transition: all 0.3s ease !important;
+}
+
+.form-pqrsd__button-container .button:hover {
+    background: #065c97 !important; /* Color de fondo al pasar el ratón */
+    box-shadow: 4px 4px 10px rgba(0, 55, 95, 0.5), -4px -4px 10px rgba(85, 129, 175, 0.5), 0 0 15px rgba(0, 55, 95, 0.4) !important; /* Sombras en tonos más oscuros de azul */
+    color: #fff !important; /* Ajusta el color del texto al pasar el ratón */
+}
+
+
+.form-pqrsd__check-label {
+    font-size:1.5rem !important;
+    text-align: left; 
+}
+
+.form-pqrsd__address{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom:1.5rem;
+}
+
+.form-pqrsd__address .form-pqrsd__input{
+    flex: 1;
+    margin-right: 10px; /* Espacio entre el input y el ícono */
+    height: 5rem;
+}
+
+.form-pqrsd__icon {
+    font-size: 1.8rem !important;
+    color: #065c97;
+    transition: font-size 0.3s ease;
+}
+
+.form-pqrsd__icon:hover {
+    font-size: 2.2rem !important;
+}
+
+.form-pqrsd__message-title {
+    font-size: 1.8rem !important;
+}
+
+
+
+/* Ajuste para pantallas pequeñas */
+
+@media (max-width: 600px) {
+    .form-pqrsd__address .form-pqrsd__input {
+        height: 7rem; /* Ajusta la altura automáticamente */
+    }
+
+    .form-pqrsd__message-title {
+        font-size: 1.6rem !important;
+    }
+    
+    .form-pqrsd__text{
+        font-size: 1.4rem !important;
+    }
+}

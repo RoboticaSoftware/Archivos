@@ -1,0 +1,72 @@
+.grid-address{
+    display: grid;
+    grid-template-columns: repeat(3,1fr); /* 3 columnas de igual tamaño */
+    grid-template-rows: auto auto auto; /* 3 filas de altura automática */
+    gap: 10px; /* Espacio entre los ítems */
+    width: 100%; /* Asegura que el grid se extienda al 100% del ancho del contenedor */
+
+}
+
+/* Primer fila: 3 elementos */
+.grid-address__item:nth-child(1) { grid-column: 1 / 2; }
+.grid-address__item:nth-child(2) { grid-column: 2 / 3; }
+.grid-address__item:nth-child(3) { grid-column: 3 / 4; }
+
+/* segunda fila: 3 elementos */
+.grid-address__item:nth-child(4) { grid-column: 1 / 2; }
+.grid-address__item:nth-child(5) { grid-column: 2 / 3; }
+.grid-address__item:nth-child(6) { grid-column: 3 / 4; }
+
+/* Tercera fila: 1 elementos */
+.grid-address__item:nth-child(7) { grid-column: 1 / -1; }
+
+.grid-address__item {
+    padding: 10px; /* Opcional: agrega un poco de espaciado interno */
+}
+
+.grid-address__item h3{
+    font-size:1.5rem !important;
+}
+
+.grid-address__input{
+    width: 100%;
+    height: auto;
+    font-size:1.4rem !important;
+}
+
+.grid-address__input-small{
+    width:40%;
+    font-size:1.4rem !important;
+}
+
+/* Para pantallas pequeñas (tabletas y móviles en modo horizontal) */
+@media (max-width: 768px) {
+    .grid-address {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+        grid-template-rows: auto auto auto auto; /* 4 filas si es necesario */
+    }
+
+    .grid-address__item:nth-child(1) { grid-column: 1 / 2; }
+    .grid-address__item:nth-child(2) { grid-column: 2 / 3; }
+    .grid-address__item:nth-child(3) { grid-column: 1 / 2; }
+    .grid-address__item:nth-child(4) { grid-column: 2 / 3; }
+    .grid-address__item:nth-child(5) { grid-column: 1 / 2; }
+    .grid-address__item:nth-child(6) { grid-column: 2 / 3; }
+    .grid-address__item:nth-child(7) { grid-column: 1 / -1; }
+}
+
+/* Para pantallas muy pequeñas (móviles en modo vertical) */
+@media (max-width: 480px) {
+    .grid-address {
+        grid-template-columns: 1fr; /* 1 columna */
+        grid-template-rows: auto; /* Cada ítem en su propia fila */
+    }
+
+    .grid-address__item:nth-child(1) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(2) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(3) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(4) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(5) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(6) { grid-column: 1 / -1; }
+    .grid-address__item:nth-child(7) { grid-column: 1 / -1; }
+}
