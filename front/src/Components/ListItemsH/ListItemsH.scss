@@ -1,73 +1,123 @@
-@import '../../css/styles.scss';
-
-.row_item {
-    width: 100%;
-    height: 40vh;
+.list-items-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-/*title*/
-
-.container_title_item{
-    position: relative;
-    width: 30%;
-    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    padding: 10px;
+  }
+  
+  .item-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    
-}
-
-.title_item{
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    left: 0%;
-    width: 120%;
-    background-color: $color-background-bar;
-    padding: 1rem;
-    border-radius: 1.5rem;
-    color: $color-text-in;
-    font-family: "Poppins", Helvetica, sans-serif;
-    font-size: 120%;
-    z-index: 1;
-}
-
-/* content*/
-
-.container_content{
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 70%;
-    padding: 2%;
-    margin: 2%;
+    margin-bottom: 20px;
+    overflow: hidden;
+    flex-direction: row; /* La imagen está a la izquierda por defecto */
+    opacity: 0;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .item-card:nth-child(even) {
+    flex-direction: row-reverse; /* Cambia la dirección para los elementos pares */
+  }
+  
+  .item-image {
+    flex: 0 0 40%; /* Ocupar 40% del ancho para la imagen */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $color-background-secundary;
-    border-radius: 2rem;
-}
-
-
-/*img */
-
-.container_img_column{
-    width: 50%;
-    height: 100%;
-    padding: 2%;
-
-}
-
-.img_column{
+    align-items: center; /* Asegura que la imagen esté centrada verticalmente */
+  }
+  
+  .image-content {
     width: 100%;
-    height: 100%;
-    
-}
-
-/*text*/
-
-.container_text_column{
-    width: 50%;
-    height: 100%;
-    font-size: 110%;
-}
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Cubre el contenedor sin distorsionar */
+  }
+  
+  .item-content {
+    padding: 24px;
+    flex: 1; /* El contenido ocupa el espacio restante */
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+  }
+  
+  .item-title {
+    margin-bottom: 16px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #374151; /* Texto gris oscuro */
+  }
+  
+  .item-text {
+    padding-top: 5%;
+    font-size: 2rem;
+    color: #4B5563; /* Texto gris medio */
+  }
+  
+  /* Animaciones */
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .item-card.appear-from-right {
+    animation-name: fadeInRight;
+  }
+  
+  .item-card.appear-from-left {
+    animation-name: fadeInLeft;
+  }
+  
+  /* Media Queries para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .item-card {
+      flex-direction: column; /* Cambia la dirección para pantallas pequeñas */
+    }
+  
+    /* Anula la dirección para los elementos pares en pantallas pequeñas */
+    .item-card:nth-child(even) {
+      flex-direction: column; /* Vuelve a la dirección de columna para los elementos pares */
+    }
+  
+    .item-image {
+      width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+      height: auto; /* Mantiene la proporción de la imagen */
+    }
+  
+    .item-content {
+      padding: 16px; /* Ajusta el padding para pantallas pequeñas */
+      text-align: center; /* Centra el texto en el contenedor */
+      flex: none; /* Asegura que el contenido no ocupe espacio flexible */
+    }
+  
+    .item-title {
+      font-size: 2rem; /* Ajusta el tamaño del texto para pantallas pequeñas */
+      margin-bottom: 12px; /* Ajusta el margen inferior para pantallas pequeñas */
+    }
+  
+    .item-text {
+      font-size: 1.5rem; /* Ajusta el tamaño del texto para pantallas pequeñas */
+    }
+  }
+  
