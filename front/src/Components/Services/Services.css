@@ -20,10 +20,12 @@
 /* Gallery Styles */
 .Gallery_home_services {
   padding: 0;
+  
 }
 
 .item_gallery_home_services {
   margin: 0;
+  
 }
 
 .container_picture {
@@ -37,10 +39,12 @@
 }
 
 .picture_home_services {
-  width: auto;
-  height: auto;
+  width: 300px; 
+  height: 200px; 
+  object-fit: cover; 
+  margin: 10px; 
   transition: transform 0.3s ease;
-  border-radius: 18px;
+  border-radius: 18px; 
 }
 
 .overlay_title_services {
@@ -48,7 +52,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
   color: white;
   text-align: center;
   padding: 0.5rem;
@@ -74,10 +78,11 @@
   background: white;
   border-radius: 10px;
   padding: 2rem;
-  z-index: 1000;
+  z-index: 101;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   width: 80%;
   max-width: 600px;
+  
 }
 
 .modal-content {
@@ -167,8 +172,14 @@
 
 .enter-animation {
   opacity: 0;
-  transform: translateY(-50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-shadow: rgba(12,84,94,0.8);
+  box-shadow: 0 4px 8px rgba(12, 84, 94, 0.8); 
+  border-radius: 10px;
 }
 
 .enter-animation-active {
@@ -190,4 +201,50 @@
   color: $color-text;
   text-align: center;
   margin: calc(3px);
+}
+/*Superposicion: Es decir que el bg esta atras del todo*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.6); 
+  z-index: 101; 
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* CSS convención -- BEM */
+
+.title_general--service {
+  color: rgba(12, 84, 94, 1);
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2%;
+}
+.text_general--service {
+  color: $color-text;
+  text-align: justify;
+  font-size: 1.8rem;
+  font-family: "Poppins", Helvetica, sans-serif;
+  padding-bottom: 2%;
+}
+.subtitle_general--service {
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: "Poppins", Helvetica, sans-serif;
+  color: $color-text;
+  text-align: center;
+  margin-bottom: 1%;
 }

@@ -1,0 +1,50 @@
+
+.chevron-circle-right,
+.chevron-circle-left {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    background-color: rgba(77,122,153, 0.5); 
+    color: white;
+    font-size: 24px; 
+    border: none;
+    cursor: pointer;
+    outline: none;
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+.chevron-circle-right {
+    right: 10px; 
+}
+
+.chevron-circle-left {
+    left: 10px; 
+}
+
+.chevron-circle-right::before,
+.chevron-circle-left::before {
+    content: '';
+    position: absolute;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    transform: rotate(-45deg); 
+}
+
+.chevron-circle-left::before {
+    transform: rotate(135deg); 
+}
+
+.chevron-circle-right:hover,
+.chevron-circle-left:hover
+{
+    background-color: rgba(77,122,153, 1);
+    transition: background-color 0.2px
+}
