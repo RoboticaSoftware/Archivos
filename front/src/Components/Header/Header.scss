@@ -1,5 +1,5 @@
 @import '../../css/styles.scss';
-// Estilos top bar *********************************
+// Estilos top bar *
 
 // Estilo general 
 .top-bar{
@@ -18,8 +18,9 @@
 
 .logo_gov a {
     display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
-    width: 15%; 
-    margin-left: 4%;   /* Ancho del enlace igual al contenedor */
+    width: 100%; 
+    margin-left: 15%;
+    height: 70%;   /* Ancho del enlace igual al contenedor */
 }
 
 .logo_gov_img{
@@ -84,8 +85,8 @@
 }
 
 .logo_AE_img{
-    width: 55%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     margin: 0% 0% 0% 10%;
 }
 
@@ -127,10 +128,40 @@
     margin-right: 10px;
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 802px) {
+
+    .logo_gov{
+        width: 55%;
+        height: auto;
+        
+    }
+
+    .logo_gov a {
+        display: block; /* Asegura que el enlace ocupe todo el ancho disponible */
+        width: 40%; 
+        margin-left: 1%;
+    }
     .nav-container img {
       max-height: 30px;
     }
+
+    .bar-menu-social-media {
+    
+        height: 100%;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* Alinea a la derecha */
+        margin-right: 5%;
+    }
+  }
+
+  @media (max-width: 1231px) {
+    .logo_AE_img{
+        display: none;
+    }
+    
+    
   }
   
   .top-bar .logo_gov_img {

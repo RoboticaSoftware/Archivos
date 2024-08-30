@@ -10,19 +10,17 @@ export function ListText({ dato }) {
           <strong>NUESTRA TECNOLOGÍA</strong>
         </h2>
         <div className="ui internally celled grid">
-          {
-            dato.map((item, key) => (
-              <div className="row" key={key}>
-                <div className="two wide column">
-                  {/* Usando la URL específica para cada item */}
-                  <Spline scene={item.splineUrl} />
-                </div>
-                <div className="text_general thirteen wide column">
-                  <p>{item.text}</p>
-                </div>
+          {dato.map((item, key) => (
+            <div className="row" key={key}>
+              <div className="two wide column spline-container">
+                {/* Usando la URL específica para cada item */}
+                <Spline scene={item.splineUrl} />
               </div>
-            ))
-          }
+              <div className="text_general">
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

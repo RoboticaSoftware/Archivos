@@ -1,33 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import "./ListItemsH.scss";
 
-import "./ListItemsH.scss"
+export function ListItemsH({ dato }) {
+  useEffect(() => {
+    const cards = document.querySelectorAll('.item-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(
+            entry.target.dataset.key % 2 === 0
+              ? 'appear-from-right'
+              : 'appear-from-left'
+          );
+          observer.unobserve(entry.target);
+        }
+      });
+    });
 
+    cards.forEach(card => observer.observe(card));
+  }, []);
 
-export function ListItemsH({dato}) {
   return (
-    <>
-        <div className='container_general'>
-            <div className="ui internally celled grid">
-                {
-                    dato.map((item,key) => (
-                        <div className="row_item" key={key}>
-                            <div className="container_title_item ">
-                                <p className='title_item'>{item.title}</p>
-                            </div>
-                            <div className='container_content'>
-                                <div className="container_img_column">
-                                    <img className='img_column' src={item.img} alt="" />
-                                </div>
-                                <div className="text_general container_text_column">
-                                    <p>{item.text}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                    )
-                }
-            </div>
+    <div className="list-items-container">
+      {dato.map((item, key) => (
+        <div key={key} data-key={key} className="item-card">
+          <div className="item-image">
+            <img src={item.img} alt="card-image" className="image-content" />
+          </div>
+          <div className="item-content">
+            <h4 className="item-title">{item.title}</h4>
+            <p className="item-text">{item.text}</p>
+          </div>
         </div>
-    </>
+      ))}
+    </div>
   )
 }
