@@ -5,15 +5,18 @@ import "./Innovacion.scss"
 export function Innovacion() {
   const items = [
     {
-      'text':'Escaneamos libros de color en formato hasta A1 600dpi. Se adaptan a documentos grandes y engomados frágiles usando la cuna V para escaneo aún más delicado.'
+      text: 'Escaneamos libros de color en formato hasta A1 600dpi. Se adaptan a documentos grandes y engomados frágiles usando la cuna V para escaneo aún más delicado.',
+      splineUrl: 'https://prod.spline.design/ekAxyJjWpiK2AiMS/scene.splinecode' 
     },
     {
-      'text':'Escaneamos planos hasta de 1.270mm de ancho, largo casi ilimitado con una resolución de 1.200 dpi camara CCD escaneo a color, escala de gris, B&N Multipagina. PDF, TIF, JGEP, PNM, PNM, PNG, BMP'
+      text: 'Escaneamos planos hasta de 1.270mm de ancho, largo casi ilimitado con una resolución de 1.200 dpi camara CCD escaneo a color, escala de gris, B&N Multipagina. PDF, TIF, JGEP, PNM, PNM, PNG, BMP',
+      splineUrl: 'https://prod.spline.design/H-mkPUNGKD54EhHH/scene.splinecode' 
     },
     {
-      'text':'La infraestructura de hardware y software nos permite digitalizar rápidamente grandes cantidades de planos y libros de gran tamaño, encuadernados sin necesidad de desempaste.'
+      text: 'La infraestructura de hardware y software nos permite digitalizar rápidamente grandes cantidades de planos y libros de gran tamaño, encuadernados sin necesidad de desempaste.',
+      splineUrl: 'https://prod.spline.design/mROjs8NDcaSJjp4c/scene.splinecode' 
     }
-  ]
+  ];
 
   const dato = [
     {
@@ -41,7 +44,7 @@ export function Innovacion() {
   return (
     <>
         <Cover title="INNOVACIÓN" />
-        <ListText dato={items}/>
+        <ListText dato = {items}/>
         <ListItemsH dato={dato}/>
     </>
   )

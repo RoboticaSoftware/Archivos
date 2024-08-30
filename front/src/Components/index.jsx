@@ -22,6 +22,6 @@ export * from "./SearchPublicUser";
 export * from "./FormPublicUsers";
 export * from "./AlertMessage";
 export * from "./PP";
-export * from "./Direction";
+export * from "./Address";
 export * from "./Notify";
 export * from "./TablePQRSD";

@@ -1,0 +1,95 @@
+/* Variables */
+:root {
+    /* mode-light */
+    font-size: 10px; /* Establezco el valor del rem a 10px */
+  
+    --color-background: #ffffff;
+    --color-text: #313131;
+    --color-text-in: #ffffff;
+    --color-title: #02454e;
+    --color-title-in: #e6e9eb;
+    --color-subtitle: #0c545e;
+  
+    --color-icon: #555353;
+    --color-icon-in: #ffffff;
+    --color-background-button: #0971b6;
+    --color-border: #cccccc;
+    --color-black: #0e0d0d;
+  
+    --color-background-bar: #21597e;
+    --color-background-secundary: #e5e7e8; /* Utilizado para todos los subcuadros */
+    --color-background-button-sup: #d0d3da; /* Se utiliza para los botones superiores */
+  }
+  
+  /* Estilos generales de la aplicación */
+  body {
+    width: 100%;
+    height: 100%;
+    font-family: "Poppins", Helvetica, sans-serif;
+    font-size: 3rem;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  
+  h1,
+  h2,
+  h3 {
+    color: var(--color-title);
+    font-family: "Poppins", Helvetica, sans-serif;
+  }
+  
+  p {
+    color: var(--color-text);
+    font-family: "Poppins", Helvetica, sans-serif;
+  }
+  
+  /* Estilos generales */
+  .text_general {
+    color: var(--color-text);
+    text-align: justify;
+    font-size: 1.8rem;
+    font-family: "Poppins", Helvetica, sans-serif;
+    padding-bottom: 2%;
+  }
+  
+  .title_general {
+    color: var(--color-title);
+    font-size: 2.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2%;
+  }
+  
+  .subtitle_general {
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: "Poppins", Helvetica, sans-serif;
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: 1%;
+  }
+  
+  .left {
+    text-align: left !important;
+  }
+  
+  .container_general {
+    width: 80%;
+    height: auto;
+    margin: 0% 10% 5% 10%;
+    font-family: "Poppins", Helvetica, sans-serif;
+  }
+  
+  .button_general { /* Corrección de ortografía: "botton" a "button" */
+    font-size: 1.5rem !important;
+  }
+  
+  .message_general {
+    padding: 2rem;
+  }
+  
+  .text_table_general {
+    font-size: 1.5rem !important;
+    width: 100%;
+  }
+  

@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Input,Button, Form } from 'semantic-ui-react'
 import {createPublicUser, updatePublicUser} from "../../api/apiPublicUsers"
-import { AlertMessage } from '../AlertMessage'
 
-import "./FormPublicUsers.scss"
+
+
+import "../FormPQRSD/FormPQRSD.css"
 
 export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShowMessage, setShowPQRSD, documentTypes}) {
     const [message, setMessage] = useState({
@@ -17,12 +18,8 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
         setPublicUser({...publicUser,[e.target.name]:e.target.value})
         setShowMessage(false)
     };
-    const getPublicUser2 = (e) => {
-        setPublicUser({...publicUser,[e.target.name]:e.target.checked})
-        setShowMessage(false)
-    };
 
-     /* Enviara el formulario cuando se tenga el api del backend */
+     /* Enviara el formulario al backend */
      const sendPublicUser = async(e) => {
         e.preventDefault()
         if (publicUser.id=== null) {
@@ -36,93 +33,95 @@ export function FormPublicUsers( {publicUser, setPublicUser,showMessage ,setShow
      
 
     return (
-    <Form key='F2' className='form_border form_login' action="#" onSubmit={sendPublicUser} >
-        <Form.Field className='input_login' >   
-            <h3 className='subtitle_general left'>Tipo de documento de identidad</h3>
-            <select className="text_label ui fluid dropdown"
+    <Form key='F2' className='form-pqrsd' action="#" onSubmit={sendPublicUser} >
+        <Form.Field className='form-pqrsd__input' >   
+            <h3 className='form-pqrsd__subtitle left'>Tipo de documento de identidad</h3>
+            {/**------------------------------------------------------------------------------- */}
+            {/**----------------------------------------------------------------------------------- */}
+            <select className="form-pqrsd__input ui fluid dropdown"
             required
             disabled
-            name='public_user_td'
+            name='pu_dt'
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_td}
+            defaultValue={publicUser.pu_dt}
             >
                 <option value=""></option>
                 {documentTypes.map((item) => (
                     <option key={item.id} value={item.id}>
-                        {item.DocumentType_code} - {item.DocumentType_description}
+                        {item.dt_code} - {item.dt_description}
                     </option>
                 ))}
             </select>
         </Form.Field>
         <Form.Field >
-            <h3 className='subtitle_general left'>Número de identificación</h3>
+            <h3 className='form-pqrsd__subtitle left'>Número de identificación</h3>
             <Input 
-            className='input_login'
+            className='form-pqrsd__input'
             icon='id card' 
             iconPosition='left' 
             placeholder='Ingrese su número de identificación' 
-            name='public_user_numberTd'
+            name='pu_number'
             type='text'
             required
             readOnly
             onChange={getPublicUser} 
-            defaultValue={publicUser.public_user_numberTd}
+            defaultValue={publicUser.pu_number}
             />
         </Form.Field>
         <Form.Field >
-            <h3 className='subtitle_general left'>Nombre o Razón Social</h3>
+            <h3 className='form-pqrsd__subtitle left'>Nombre o Razón Social</h3>
             <Input 
-            className='input_login'
+            className='form-pqrsd__input'
             icon='user' 
             iconPosition='left' 
             placeholder='Ingrese su nombre o su razon social' 
-            name='public_user_name'
+            name='pu_name'
             type='text'
             required
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_name}
+            defaultValue={publicUser.pu_name}
             />
         </Form.Field>
         
         <Form.Field >
-            <h3 className='subtitle_general left'>Correo electrónico</h3>
+            <h3 className='form-pqrsd__subtitle left'>Correo electrónico</h3>
             <Input 
-            className='input_login'
-            icon='envelope outline' 
+            className='form-pqrsd__input'
+            icon='envelope' 
             iconPosition='left' 
             placeholder='Ingrese su email' 
-            name='public_user_email'
+            name='pu_email'
             type='email'
             required
             onChange={getPublicUser}
-            defaultValue={publicUser.public_user_email}
+            defaultValue={publicUser.pu_email}
             />
         </Form.Field>
         <Form.Field >
-            <h3 className='subtitle_general left'>Número de contacto</h3>
+            <h3 className='form-pqrsd__subtitle left'>Número de contacto</h3>
             <Input 
-            className='input_login'
+            className='form-pqrsd__input'
             icon='phone volume' 
             iconPosition='left' 
             placeholder='Ingrese su número telefónico' 
-            name='public_user_phone'
+            name='pu_phone'
             type='number'
             required
             onChange={getPublicUser} 
-            defaultValue={publicUser.public_user_phone}
+            defaultValue={publicUser.pu_phone}
             />
         </Form.Field>
         {publicUser.id
         ?
-        <Form.Field>
-            <Button type='submit' className = 'botton_general' >Modificar</Button>
-            <Button type='button' className = 'botton_general' onClick={() => {setShowPQRSD (true)}}>Siguiente</Button>
+        <Form.Field className = 'form-pqrsd__button-container'>
+            <Button type='submit' >Modificar</Button>
+            <Button type='button' onClick={() => {setShowPQRSD (true)}}>Siguiente</Button>
         </Form.Field>
         :
         <Form.Field>
             {message.title === 'Exitoso' 
-            ?<Button type='button' className = 'botton_general' onClick={() => {setShowPQRSD (true)}}>Siguiente</Button>
-            :<Button type='submit' className = 'botton_general' >Guardar</Button>
+            ?<Button type='button' onClick={() => {setShowPQRSD (true)}}>Siguiente</Button>
+            :<Button type='submit' >Guardar</Button>
             } 
             
         </Form.Field>

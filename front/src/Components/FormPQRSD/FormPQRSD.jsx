@@ -1,15 +1,15 @@
 import React, {  useState, useEffect} from 'react'
-import { Button, Form, TextArea, Message, Input  } from 'semantic-ui-react'
+import { Button, Form, TextArea, Message } from 'semantic-ui-react'
 import {SearchPublicUser} from '../SearchPublicUser'
 import {FormPublicUsers} from '../FormPublicUsers'
-import {Direction} from "../Direction"
-import {PP} from "../PP";
-import {getFilingTypeApi, createFilingApi,createFilingAddressApi,createFilingUsersApi} from '../../api/apiFilings'
+import {Address} from "../Address"
+import {getRecordsTypeApi, createRecordsApi } from '../../api/apiRecords'
+import {updatePublicUser} from "../../api/apiPublicUsers"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import "./FormPQRSD.scss"
+import "./FormPQRSD.css"
 
 export function FormPQRSD() {
     
@@ -17,34 +17,35 @@ export function FormPQRSD() {
 
     const [visible, setVisible] = useState(false);
     const [sendAddress, setSendAddress] = useState(false);
-    const [sendUser, setSendUser] = useState(false);
-    const [direction, setDirection] = useState({});
+    const [address, setAddress] = useState({});
     const [documentTypes, setDocumentTypes] = useState([]);
-    const [flingsTypes, setFilingsTypes] = useState([]);
+    const [recordsTypes, setRecordsTypes] = useState([]);
     const [showMessage, setShowMessage ] = useState(false);
     const [showPQRSD, setShowPQRSD ] = useState(false);
+    const [showFormAddress, setShowFormAddress] = useState(false)
 
     const [PQRSD, setPQRSD] = useState({
         'id' : null,
-        'Filings_receive_at_home': false
+        'r_receive_at_home': false
     });
 
     const [publicUser, setPublicUser] = useState(
         {
             'id':null,
-            'public_user_td' : "",
-            'public_user_numberTd' : "",
-            'public_user_name' : "",
-            'public_user_email' : "",
-            'public_user_phone' : null ,
+            'pu_td' : "",
+            'pu_numberTd' : "",
+            'pu_name' : "",
+            'pu_email' : "",
+            'pu_phone' : null ,
+            'pu_address' : null ,
             'enable' : false
         }
     );
 
     useEffect(() => {
         const fetchData = async () => {
-              const data = await getFilingTypeApi();
-              setFilingsTypes(data);
+              const data = await getRecordsTypeApi();
+              setRecordsTypes(data);
         };
         fetchData();
     }, [])
@@ -52,24 +53,24 @@ export function FormPQRSD() {
     useEffect(() => {
         setPQRSD({
             'id' : null,
-            'Filings_receive_at_home': false
+            'r_receive_at_home': false,
+            'r_user':publicUser.id
         });
-        setDirection({})
+        setAddress({})
         setVisible(false)
-        setSendUser(false)
         setSendAddress(false)
+
     }, [showPQRSD])
 
 
     useEffect(() => {
         if(visible){
             if(sendAddress){
-                const Full_adress = `${direction.country},${direction.city}: Barrio:${direction.neighborhood}  Cra: ${direction.race} Calle: ${direction.street} # ${direction.meanNumberStreet}-${direction.secondNumberStreet}  ${direction.Complement?direction.Complement:''}`;
-                createFilingAddressApi(PQRSD, Full_adress);
+                const Full_adress = `${address.country},${address.city}: Barrio:${address.neighborhood}  Cra: ${address.race} Calle: ${address.street} # ${address.meanNumberStreet}-${address.secondNumberStreet}  ${address.Complement?address.Complement:''}`;
+                const user = {...publicUser, 'pu_address': Full_adress}
+                updatePublicUser(user, setShowMessage,setPublicUser)
             }
-            if(sendUser){
-                createFilingUsersApi(PQRSD, publicUser);
-            }
+            
         }
         
     }, [visible])
@@ -80,34 +81,21 @@ export function FormPQRSD() {
         setPQRSD({...PQRSD,[e.target.name]:e.target.value})
     }
 
-    const getPQRSD2 = (e) => {
-        setPQRSD({...PQRSD,[e.target.name]:e.target.checked})
-    };
-
-    const getPQRSDFile = (e) => {
-        setPQRSD({...PQRSD,[e.target.name]:e.target.files[0]})
-    }
-
-    const sendFiling = () => {
+    const sendRecord = () => {
         const fn = async() =>{
-            const result = await createFilingApi(PQRSD, setPQRSD);
+            const result = await createRecordsApi(PQRSD, setPQRSD);
             if (result){
                 setVisible(true);
             }else {
                 setVisible(false);
             }
 
-            if (PQRSD.Filings_receive_at_home){
+            if (PQRSD.r_receive_at_home && showFormAddress ){
                 setSendAddress(true);
             }else{
                 setSendAddress(false);
             }
 
-            if (publicUser.id){
-                setSendUser(true);
-            }else {
-                setSendUser(false);
-            }
         };
         fn();
         
@@ -119,6 +107,13 @@ export function FormPQRSD() {
         setVisible(false);
     }
 
+    const handleCheckboxChange = (e) => {
+        e.target.checked && publicUser.pu_address
+        ? setShowFormAddress(false)
+        : setShowFormAddress(true)
+
+        setPQRSD({...PQRSD,[e.target.name]:e.target.checked})
+    };
     
 
     return (
@@ -141,75 +136,93 @@ export function FormPQRSD() {
             />
             : null
             }
+
+            {/** Formulario de la PQRS */}
             { showPQRSD
             ? 
             <>
-            <Form className='form_border' onSubmit={sendFiling}>
+            <Form className='form-pqrsd' onSubmit={sendRecord}>
                 <Form.Field >   
-                    <h3 className='subtitle_general left'>Tipo de petición</h3>
-                    <select className="text_label ui fluid dropdown"
+                    <h3 className='form-pqrsd__subtitle left'>Tipo de petición</h3>
+                    <select className="form-pqrsd__input ui fluid dropdown"
                     required
-                    name='Filings_td'
+                    name='r_rt'
                     onChange={getPQRSD}
                     >
                         <option value=""></option>
-                        {flingsTypes.map((item) => (
-                            <option key={item.id} value={item.id}>
-                                {item.FilingsType_description}
+                        {recordsTypes.map((item) => (
+                            <option key={`rt_${item.id}`} value={item.id}>
+                                {item.rt_description}
                             </option>
                         ))}
                     </select>
                 </Form.Field>
                 <Form.Field >
-                    <h3 className='subtitle_general left'>Descripción de la Solicitud</h3>
+                    <h3 className='form-pqrsd__subtitle left'>Descripción de la Solicitud</h3>
                     <TextArea 
-                    className='text_label'
+                    className='form-pqrsd__input'
                     placeholder='Ingrese el detalle de su solicitud (máximo 255 caracteres)' 
-                    name='Filings_description'
+                    name='r_description'
                     type='text'
                     maxLength={255}
                     onChange={getPQRSD}
                     required  
                   />
                 </Form.Field>
-                <Form.Field className='ui checkbox'>
-                    <br />
-                    <input type='checkbox' id='informacionResidencia' name='Filings_receive_at_home' onChange={getPQRSD2} />
-                    <label htmlFor='informacionResidencia' className='text_label'>Recibir información en el lugar de residencia</label>
-                    <p className='content_text_anonymous'>
-                        Al seleccionar esta opción usted acepta que la información solicitada sea enviada a su lugar de residencia, 
-                        esto puede generar costos adicionales de logistica y transporte.
+                {publicUser.id
+                    ?
+                    <>
+                        <Form.Field className='form-pqrsd__check-container ui checkbox'>
+                            <input  
+                            type='checkbox' 
+                            id='informacionResidencia' 
+                            name='r_receive_at_home' 
+                            onChange={handleCheckboxChange}
+                            checked={PQRSD.r_receive_at_home} 
+                            />
+                            <label className= 'form-pqrsd__check-label' htmlFor='informacionResidencia' >Recibir información en el lugar de residencia</label>
+                            <p className='form-pqrsd__text'>
+                                Al seleccionar esta opción usted acepta que la información solicitada sea enviada a su lugar de residencia, 
+                                esto puede generar costos adicionales de logistica y transporte.
 
-                    </p>
-                    <br />
-                </Form.Field>
-                {
-                    PQRSD.Filings_receive_at_home
-                    ? <>
-                    <Direction direction = {direction} setDirection = {setDirection} />
-                    <br />
+                            </p>
+                        </Form.Field>
+                        {
+                            PQRSD.r_receive_at_home &&
+                            (
+                            <>
+                                {publicUser.pu_address && (
+                                    <div className='form-pqrsd__address'>
+                                        <TextArea 
+                                        className='form-pqrsd__input'
+                                        placeholder='Ingrese su número de identificación' 
+                                        name='pu_number'
+                                        type='text'
+                                        readOnly
+                                        defaultValue={publicUser.pu_address}
+                                        />
+                                        <i 
+                                        className='form-pqrsd__icon edit icon' 
+                                        onClick={() => {setShowFormAddress(!showFormAddress)}}
+                                        title='Cambiar la dirección actual'
+                                        ></i>
+                                    </div>
+                                )}
+                                { showFormAddress && (
+                                    <Address address = {address} setAddress = {setAddress} />
+                                )}
+                            </>
+                            )
+                        }
                     </>
-                    : null
+                    :
+                    null
                 }
-                {/** 
-                <Form.Field>
-                    <Input 
-                        className='input_login'
-                        icon='id card' 
-                        iconPosition='left' 
-                        placeholder='Agregar archvios' 
-                        name='Filings_attached_file'
-                        type='file'
-                        onChange={getPQRSDFile} 
-                    />
-                </Form.Field>
-                */}
 
-                <Form.Field className='ui checkbox'>
+                <Form.Field className='form-pqrsd__check-container ui checkbox'>
                     <input type='checkbox' required id='aceptarTerminos'/>
-                    <label htmlFor="aceptarTerminos" className='text_label'>Aceptar terminos y condiciones</label>
-                    <br />
-                    <p className='content_text_anonymous'>
+                    <label htmlFor="aceptarTerminos" className='form-pqrsd__check-label'>Aceptar terminos y condiciones</label>
+                    <p className='form-pqrsd__text'>
                         Al hacer clic el botón enviar, usted acepta la remisión de la PQRSD a 
                         la entidad Archivos del estado.
                          Sus datos serán recolectados y tratados conforme con la Política de Tratamiento de Datos. 
@@ -227,8 +240,8 @@ export function FormPQRSD() {
                     hidden={!visible}
                     onDismiss={hiddenAlert}
                     className='message_general'>
-                    <Message.Header className='text_label'>Se ha generado el radicado número:  {PQRSD.Filings_number}</Message.Header>
-                    <p className='content_text_anonymous'>
+                    <Message.Header className='form-pqrsd__message-title'>Se ha generado el radicado número:  {PQRSD.r_number}</Message.Header>
+                    <p className='form-pqrsd__text'>
                     Si su solicitud se encuentra bajo carácter <strong>anónimo</strong>, utilice este número para verificar 
                     el estado de su solicitud a través del siguiente enlace <a href="">clic aquí.</a> En caso contrario, 
                     la información detallada sobre su solicitud será enviada al correo electrónico registrado en la plataforma.
@@ -236,9 +249,10 @@ export function FormPQRSD() {
                     {/* Botón de "Aceptar" */}
                     <Button positive onClick={hiddenAlert} className = 'botton_general' type='button'>Aceptar</Button>
                 </Message>
-                : <Form.Field>
+                : 
+                <Form.Field className='form-pqrsd__button-container'>
                     <br />
-                    <Button  className = 'botton_general' >Enviar</Button>
+                    <Button type = 'submit' className = 'botton_general' >Enviar</Button>
                 </Form.Field>
                 }
                 
@@ -249,10 +263,6 @@ export function FormPQRSD() {
 
             }
             <ToastContainer />
-            {/** 
-            <PP />
-            <Direction />
-            */}
             
             
 

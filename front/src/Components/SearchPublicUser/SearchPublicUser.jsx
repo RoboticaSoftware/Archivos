@@ -1,7 +1,8 @@
 import {useState, useEffect, useRef} from 'react'
 import {getPuplicUsersApi, getDocumentTypeApi} from "../../api/apiPublicUsers"
 
-import "./SearchPublicUser.scss"
+import "../FormPQRSD/FormPQRSD.css"
+
 import { Input,Button, Form } from 'semantic-ui-react'
 
 export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, setDocumentTypes}) {
@@ -37,11 +38,11 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
         setPublicUser((prev) => (
             {
                 'id':null,
-                'public_user_td' : "",
-                'public_user_numberTd' : "",
-                'public_user_name' : "",
-                'public_user_email' : "",
-                'public_user_phone' : null ,
+                'pu_dt' : "",
+                'pu_number' : "",
+                'pu_name' : "",
+                'pu_email' : "",
+                'pu_phone' : null ,
                 'enable' : false
             }
         ));
@@ -62,23 +63,23 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
             setPublicUser(result);
         }else {
             setPublicUser({
-                'public_user_td' : null,
-                'public_user_numberTd' : "NA",
-                'public_user_name' : "",
-                'public_user_email' : "",
-                'public_user_phone' : null,
+                'pu_dt' : null,
+                'pu_number' : "NA",
+                'pu_name' : "",
+                'pu_email' : "",
+                'pu_phone' : null,
                 'enable' : false,
                 'id' : null 
             });
         }
     }
-
+    
     return (
         <>
-        <Form className='form_border' onSubmit={sendPublicUser} action="#">
+        <Form className='form-pqrsd' onSubmit={sendPublicUser} action="#">
             <Form.Field >   
-                <h3 className='subtitle_general left'>Tipo de solicitud</h3>
-                <select className="text_label ui fluid dropdown"
+                <h3 className='form-pqrsd__subtitle left'>Tipo de solicitud</h3>
+                <select className="form-pqrsd__input ui fluid dropdown"
                 required
                 name='anonymous'
                 onChange={getIdentification}
@@ -86,20 +87,18 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                     <option value="0">Anonima</option>
                     <option value="1">En nombre propio</option>
                 </select>
-                <br />
-                <p className='content_text_anonymous'>
+                <p className='form-pqrsd__text'>
                     Seleccione <strong>Anonima</strong> solo si no desea registrar su información personal de contacto. Recuerde que, al seleccionar esta opción,
                      usted acepta las condiciones conforme a lo establecido en el artículo 38 de la Ley 190 de 1995; artículo 69; de la 
                      Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005.</p>
-                <br />
             </Form.Field>
             {identification.anonymous === '1'
             ?
             <>
                 <Form.Field>
-                    <h3 className='subtitle_general left'>Tipo de documento de identidad</h3>
+                    <h3 className='form-pqrsd__subtitle left'>Tipo de documento de identidad</h3>
                     <select
-                        className="text_label ui fluid dropdown"
+                        className="form-pqrsd__input ui fluid dropdown"
                         required={identification.anonymous === '1' ? true : false}
                         name='document_type'
                         onChange={getIdentification}
@@ -107,15 +106,15 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                         <option value=""></option>
                         {documentTypes.map((item) => (
                             <option key={item.id} value={item.id}>
-                                {item.DocumentType_code} - {item.DocumentType_description}
+                                {item.dt_code} - {item.dt_description}
                             </option>
                         ))}
                     </select>
                 </Form.Field>
                 <Form.Field >
-                    <h3 className='subtitle_general left'>Número de identificación</h3>
+                    <h3 className='form-pqrsd__subtitle left'>Número de identificación</h3>
                     <Input 
-                    className='input_login'
+                    className='form-pqrsd__input'
                     icon='id card' 
                     iconPosition='left' 
                     placeholder='Ingrese su número de identificación' 
@@ -128,11 +127,12 @@ export function SearchPublicUser({setShowPQRSD, setPublicUser,documentTypes, set
                 </Form.Field>
             </>
             : null}
-            <Form.Field>
-                <br />
+            <Form.Field className='form-pqrsd__button-container'>
                 {identification.anonymous === '1'
-                ? <Button type='submit' className = 'botton_general' >Buscar</Button>
-                : <Button type='button' className = 'botton_general' onClick={showPQRSD} >Siguiente</Button>}
+                ? <Button className='button' type='submit' >
+                    Buscar
+                </Button>
+                : <Button className='button' type='button' onClick={showPQRSD} >Siguiente</Button>}
             </Form.Field>
         </Form>
         </>
