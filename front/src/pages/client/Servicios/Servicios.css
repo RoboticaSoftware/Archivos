@@ -1,0 +1,121 @@
+// Servicios.scss
+
+/* General Styles */
+.title_services {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.card-body--servicio {
+  padding: 0 2rem;
+}
+
+.grid_services {
+  margin: 0;
+  width: 100%;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.items_services {
+  font-size: 0.9rem;
+  color: #555;
+  list-style-type: disc;
+  margin: 0.5rem 0;
+}
+
+.card-button {
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  background-color: #f7f7f7;
+  font-size: 1rem;
+}
+
+.card-button a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.card-button a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .grid_services {
+    display: block;
+  }
+
+  .card {
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .title_services {
+    font-size: 2rem;
+  }
+
+  .card-content {
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .items_services {
+    font-size: 0.8rem;
+  }
+
+  .card-button {
+    padding: 0.5rem;
+  }
+}
